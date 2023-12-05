@@ -4,6 +4,7 @@ import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import About from './pages/About';
 import Profile from './pages/Profile';
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -13,7 +14,7 @@ export default function App() {
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/about" element={<About />} />
       <Route path="/profile" element={<Profile />} />
-      </Routes>
+    </Routes>
     </BrowserRouter>
   )
 }
