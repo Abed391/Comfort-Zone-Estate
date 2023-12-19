@@ -11,7 +11,7 @@ import {
   updateUserStart,
   updateUserSuccess,
   updateUserFailure,
-} from '../redux/user/userSlice.js';
+} from '../components/userSlice';
 import { useDispatch } from 'react-redux';
 
 export default function Profile() {
