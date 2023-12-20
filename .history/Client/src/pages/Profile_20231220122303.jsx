@@ -11,8 +11,6 @@ import {
   updateUserStart,
   updateUserSuccess,
   updateUserFailure,
-  deleteUserFailure,
-  deleteUserSuccess,
 } from '../redux/user/userSlice.js';
 import { useDispatch } from 'react-redux';
 
@@ -84,23 +82,6 @@ export default function Profile() {
       dispatch(updateUserFailure(error.message));
     }
   };
-
-  const handleDeleteUser = async () => {
-    try {
-      dispatch(updateUserStart());
-      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
-        method: 'DELETE',
-      });
-      const data = await res.json();
-      if (data.success === false) {
-        dispatch(updateUserFailure(data.message));
-        return; 
-      }
-      dispatch(deleteUserSuccess(data));
-     } catch (error) {
-        dispatch(deleteUserFailure  (error.message));
-      }
-  }
 
   return (
     <div className='p-3 max-w-lg mx-auto'>
