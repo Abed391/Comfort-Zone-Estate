@@ -71,9 +71,8 @@ export const {
   deleteUserFailure,
   deleteUserSuccess,
   deleteUserStart,
-  signOutUserStart,
-  SignOutUserSuccess,
-  signOutUserFailure,
+  signOutuserStart,
+  SignOutUser
 } = userSlice.actions;
 
 export default userSlice.reducer;
