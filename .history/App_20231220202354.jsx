@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Home from './pages/Home';
-import SignUp from './pages/SignUp';
-import SignIn from './pages/SignIn';
-import About from './pages/About';
-import Profile from './pages/Profile';
-import Header from './components/Header';
-import PrivateRoute from './components/PrivateRoute';
+import Home from './Client/src/pages/Home';
+import SignUp from './Client/src/pages/SignUp';
+import SignIn from './Client/src/pages/SignIn';
+import About from './Client/src/pages/About';
+import Profile from './Client/src/pages/Profile';
+import Header from './Client/src/components/Header';
+import PrivateRoute from './Client/src/components/PrivateRoute';
 import CreateListing from './pages/CreateListing';
 export default function App() {
   return (
