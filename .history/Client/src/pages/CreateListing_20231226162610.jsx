@@ -13,7 +13,6 @@ export default function CreateListing() {
   const handleImageSubmit = (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
       setUploading(true);
-      setImageUploadError(false);
       const promises = [];
       console.log(e);
 
@@ -24,15 +23,12 @@ export default function CreateListing() {
         setFormData({ ...formData, imageUrls: formData.imageUrls.concat(urls) 
         });
         setImageUploadError(false);
-        setUploading(false);
       }).catch((err) => {
         setImageUploadError('Image upload failed (2 mb max per image)');
-        setUploading(false);
         console.log(err);
       });
     }else{
       setImageUploadError("You can only add up to 6 images per listing");
-      setUploading(false);
     }
   };
 

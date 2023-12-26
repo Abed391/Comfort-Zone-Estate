@@ -12,8 +12,6 @@ export default function CreateListing() {
   console.log(formData);
   const handleImageSubmit = (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
-      setUploading(true);
-      setImageUploadError(false);
       const promises = [];
       console.log(e);
 
@@ -24,15 +22,12 @@ export default function CreateListing() {
         setFormData({ ...formData, imageUrls: formData.imageUrls.concat(urls) 
         });
         setImageUploadError(false);
-        setUploading(false);
       }).catch((err) => {
         setImageUploadError('Image upload failed (2 mb max per image)');
-        setUploading(false);
         console.log(err);
       });
     }else{
       setImageUploadError("You can only add up to 6 images per listing");
-      setUploading(false);
     }
   };
 
@@ -126,7 +121,7 @@ export default function CreateListing() {
         <span className='font-normal text-gray-600 ml-2'>The first image will be the cover (max 6)</span></p> 
         <div className='flex p-3 gap-4'>
           <input onChange={(e)=> setFiles(e.target.files)} className='p-3 border border-gray-300 rounded w-full' type='file' id='images' accept='image/*' multiple />
-          <button disabled={uploading} type='button' onClick={handleImageSubmit} className='p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80'>{uploading ? 'Uploading...' : 'Upload'}</button>
+          <button type='button' onClick={handleImageSubmit} className='p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80'>Upload</button>
         </div>
         <p className="text-red-700 text-sm">{imageUploadError && imageUploadError}</p>
         {

@@ -24,7 +24,6 @@ export default function CreateListing() {
         setFormData({ ...formData, imageUrls: formData.imageUrls.concat(urls) 
         });
         setImageUploadError(false);
-        setUploading(false);
       }).catch((err) => {
         setImageUploadError('Image upload failed (2 mb max per image)');
         setUploading(false);
@@ -32,7 +31,7 @@ export default function CreateListing() {
       });
     }else{
       setImageUploadError("You can only add up to 6 images per listing");
-      setUploading(false);
+      setUploading(false)
     }
   };
 

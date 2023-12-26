@@ -27,12 +27,10 @@ export default function CreateListing() {
         setUploading(false);
       }).catch((err) => {
         setImageUploadError('Image upload failed (2 mb max per image)');
-        setUploading(false);
         console.log(err);
       });
     }else{
       setImageUploadError("You can only add up to 6 images per listing");
-      setUploading(false);
     }
   };
 

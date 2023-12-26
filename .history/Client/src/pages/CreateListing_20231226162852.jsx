@@ -32,7 +32,6 @@ export default function CreateListing() {
       });
     }else{
       setImageUploadError("You can only add up to 6 images per listing");
-      setUploading(false);
     }
   };
 
