@@ -5,8 +5,7 @@ import {useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom'
 
 export default function CreateListing() {
-  const { currentUser } = useSelector(state => state.user);
-  const navigate = useNavigate();
+  const {currentUser} = useSelector(state => state.user)
   const [files, setFiles] = useState([]);
   const [formData, setFormData] = useState({
     imageUrls: [], 
@@ -110,7 +109,7 @@ export default function CreateListing() {
       if(+formData.regularPrice < +formData.discountPrice) return setError('Discount price must be lower than regular price')
       setLoading(true);
       setError(false);
-      const res = await fetch(`/api/listing/create`,{
+      const res = await fetch('/api/listing/create',{
         method:'POST',
         headers: {
           'content-Type': 'application/json',
@@ -122,10 +121,11 @@ export default function CreateListing() {
       });
       const data = await res.json();
       setLoading(false);
-      if (data.success === false) {
-        setError(data.message);
+      if (data.success === false){
+        setError(error.message);
+        setLoading(false);
       }
-      navigate(`/listing/${data._id}`);
+
     } catch(error){
       setError(error.message);
       setLoading(false);
