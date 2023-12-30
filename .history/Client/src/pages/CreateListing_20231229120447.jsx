@@ -33,7 +33,7 @@ export default function CreateListing() {
   const [uploading, setUploading] = useState(false);
   console.log(formData);
   const handleImageSubmit = (e) => {
-    if (files.length > 0 && files.length + formData.imageUrls.length < 11) {
+    if (files.length > 0 && files.length + formData.imageUrls.length < 10) {
       setUploading(true);
       setImageUploadError(false);
       const promises = [];
@@ -57,7 +57,7 @@ export default function CreateListing() {
           console.log(err);
         });
     } else {
-      setImageUploadError("You can only add up to 10 images per listing");
+      setImageUploadError("You can only add up to 6 images per listing");
       setUploading(false);
     }
   };
@@ -162,7 +162,7 @@ export default function CreateListing() {
             placeholder="Name"
             className="border p-3 rounded-lg"
             id="name"
-            maxLength="80"
+            maxLength="62"
             minLength="10"
             required
             onChange={handleChange}
@@ -305,7 +305,7 @@ export default function CreateListing() {
           <p className="font-semibold">
             Images:
             <span className="font-normal text-gray-600 ml-2">
-              The first image will be the cover (max 10)
+              The first image will be the cover (max 6)
             </span>
           </p>
           <div className="flex p-3 gap-4">

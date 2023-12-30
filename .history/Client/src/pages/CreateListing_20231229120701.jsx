@@ -33,7 +33,7 @@ export default function CreateListing() {
   const [uploading, setUploading] = useState(false);
   console.log(formData);
   const handleImageSubmit = (e) => {
-    if (files.length > 0 && files.length + formData.imageUrls.length < 11) {
+    if (files.length > 0 && files.length + formData.imageUrls.length < 10) {
       setUploading(true);
       setImageUploadError(false);
       const promises = [];
@@ -52,7 +52,7 @@ export default function CreateListing() {
           setUploading(false);
         })
         .catch((err) => {
-          setImageUploadError("Image upload failed (2 mb max per image)");
+          setImageUploadError("Image upload failed (5 mb max per image)");
           setUploading(false);
           console.log(err);
         });
@@ -305,7 +305,7 @@ export default function CreateListing() {
           <p className="font-semibold">
             Images:
             <span className="font-normal text-gray-600 ml-2">
-              The first image will be the cover (max 10)
+              The first image will be the cover (max 6)
             </span>
           </p>
           <div className="flex p-3 gap-4">

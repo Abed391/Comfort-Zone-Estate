@@ -52,7 +52,7 @@ export default function CreateListing() {
           setUploading(false);
         })
         .catch((err) => {
-          setImageUploadError("Image upload failed (2 mb max per image)");
+          setImageUploadError("Image upload failed (5 mb max per image)");
           setUploading(false);
           console.log(err);
         });
@@ -305,7 +305,7 @@ export default function CreateListing() {
           <p className="font-semibold">
             Images:
             <span className="font-normal text-gray-600 ml-2">
-              The first image will be the cover (max 10)
+              The first image will be the cover (max 6)
             </span>
           </p>
           <div className="flex p-3 gap-4">

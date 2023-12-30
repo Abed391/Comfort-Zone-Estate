@@ -224,7 +224,7 @@ export default function Profile() {
       </p>
       {userListings && userListings.length > 0 && (
         <div className="">
-          <h1 className="text-center mt-7 text 2xl font-semibold">
+          <h1 className="text-center my-7 text 2xl font-semibold">
             Your Listings
           </h1>
           {userListings.map((listing) => (
