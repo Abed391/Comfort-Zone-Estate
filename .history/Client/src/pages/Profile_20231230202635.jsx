@@ -133,24 +133,7 @@ export default function Profile() {
       setShowListingsError(true);
     }
   };
-  const handleListingDelete = async (listingId) => {
-    try {
-      const res = await fetch(`/api/listing/delete/${listingId}`, {
-        method: "DELETE",
-      });
-      const data = await res.json();
-      if (data.success === false) {
-        console.log(data.message);
-      }
-    } catch (error) {
-      console.log(error.message);
-      return;
-    }
 
-    setUserListings((prev) =>
-      prev.filter((listing) => listing._id !== listingId)
-    );
-  };
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
@@ -240,7 +223,7 @@ export default function Profile() {
         {showListingsError ? "Error showing listings" : ""}
       </p>
       {userListings && userListings.length > 0 && (
-        <div className="flex flex-col gap-4">
+        <div className="">
           <h1 className="text-center mt-7 text 2xl font-semibold">
             Your Listings
           </h1>
@@ -263,13 +246,13 @@ export default function Profile() {
                 <p>{listing.name}</p>
               </Link>
               <div className="flex flex-col items-center">
-                <button
+                <botton
                   onClick={() => handleListingDelete(listing._id)}
                   className="text-red-700"
                 >
                   Delete
-                </button>
-                <button className="text-green-700">Edit</button>
+                </botton>
+                <botton className="text-green-700">Edit</botton>
               </div>
             </div>
           ))}

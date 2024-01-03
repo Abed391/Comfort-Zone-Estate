@@ -240,7 +240,7 @@ export default function Profile() {
         {showListingsError ? "Error showing listings" : ""}
       </p>
       {userListings && userListings.length > 0 && (
-        <div className="flex flex-col gap-4">
+        <div className="">
           <h1 className="text-center mt-7 text 2xl font-semibold">
             Your Listings
           </h1>
@@ -263,13 +263,9 @@ export default function Profile() {
                 <p>{listing.name}</p>
               </Link>
               <div className="flex flex-col items-center">
-                <button
-                  onClick={() => handleListingDelete(listing._id)}
-                  className="text-red-700"
-                >
-                  Delete
-                </button>
-                <button className="text-green-700">Edit</button>
+                <botton onClick={() => handleListingDelete(listing._id)}
+                  className="text-red-700">Delete</botton>
+                <botton className="text-green-700">Edit</botton>
               </div>
             </div>
           ))}

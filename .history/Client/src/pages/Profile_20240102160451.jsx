@@ -138,6 +138,16 @@ export default function Profile() {
       const res = await fetch(`/api/listing/delete/${listingId}`, {
         method: "DELETE",
       });
+
+      if (res.ok) {
+        const data = await res.json();
+        // Handle the success response
+      } else {
+        // Handle the error response
+        const errorMessage = await res.text();
+        console.error(`Error deleting listing: ${errorMessage}`);
+      }
+
       const data = await res.json();
       if (data.success === false) {
         console.log(data.message);

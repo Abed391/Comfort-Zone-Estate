@@ -143,7 +143,6 @@ export default function Profile() {
         console.log(data.message);
       }
     } catch (error) {
-      console.log(error.message);
       return;
     }
 

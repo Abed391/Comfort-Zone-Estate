@@ -146,10 +146,6 @@ export default function Profile() {
       console.log(error.message);
       return;
     }
-
-    setUserListings((prev) =>
-      prev.filter((listing) => listing._id !== listingId)
-    );
   };
   return (
     <div className="p-3 max-w-lg mx-auto">
@@ -240,7 +236,7 @@ export default function Profile() {
         {showListingsError ? "Error showing listings" : ""}
       </p>
       {userListings && userListings.length > 0 && (
-        <div className="flex flex-col gap-4">
+        <div className="">
           <h1 className="text-center mt-7 text 2xl font-semibold">
             Your Listings
           </h1>
@@ -263,13 +259,13 @@ export default function Profile() {
                 <p>{listing.name}</p>
               </Link>
               <div className="flex flex-col items-center">
-                <button
+                <botton
                   onClick={() => handleListingDelete(listing._id)}
                   className="text-red-700"
                 >
                   Delete
-                </button>
-                <button className="text-green-700">Edit</button>
+                </botton>
+                <botton className="text-green-700">Edit</botton>
               </div>
             </div>
           ))}

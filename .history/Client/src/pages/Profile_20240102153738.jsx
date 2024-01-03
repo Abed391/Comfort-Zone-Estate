@@ -20,7 +20,10 @@ import { Link } from "react-router-dom";
 
 export default function Profile() {
   const fileRef = useRef(null);
+  const dispatch = useDispatch();
+
   const { currentUser, loading, error } = useSelector((state) => state.user);
+
   const [file, setFile] = useState(undefined);
   const [filePerc, setFilePerc] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
@@ -28,7 +31,6 @@ export default function Profile() {
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [showListingsError, setShowListingsError] = useState(false);
   const [userListings, setUserListings] = useState([]);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (file) {
@@ -51,18 +53,22 @@ export default function Profile() {
       },
       (error) => {
         setFileUploadError(true);
-        console.log(error);
+        console.error("Error uploading file:", error);
       },
       () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) =>
-          setFormData({ ...formData, avatar: downloadURL })
-        );
+        getDownloadURL(uploadTask.snapshot.ref)
+          .then((downloadURL) =>
+            setFormData((prevData) => ({ ...prevData, avatar: downloadURL }))
+          )
+          .catch((error) =>
+            console.error("Error getting download URL:", error)
+          );
       }
     );
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
+    setFormData((prevData) => ({ ...prevData, [e.target.id]: e.target.value }));
   };
 
   const handleSubmit = async (e) => {
@@ -120,6 +126,7 @@ export default function Profile() {
       dispatch(deleteUserFailure(error.message));
     }
   };
+
   const handleShowListings = async () => {
     try {
       setShowListingsError(false);
@@ -133,6 +140,7 @@ export default function Profile() {
       setShowListingsError(true);
     }
   };
+
   const handleListingDelete = async (listingId) => {
     try {
       const res = await fetch(`/api/listing/delete/${listingId}`, {
@@ -151,6 +159,7 @@ export default function Profile() {
       prev.filter((listing) => listing._id !== listingId)
     );
   };
+
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
@@ -171,7 +180,7 @@ export default function Profile() {
         <p className="text-sm self-center">
           {fileUploadError ? (
             <span className="text-red-700">
-              Error Image upload (image must be less than 2 mb)
+              Error: Image upload failed (image must be less than 2 MB)
             </span>
           ) : filePerc > 0 && filePerc < 100 ? (
             <span className="text-slate-700">{`Uploading ${filePerc}%`}</span>
