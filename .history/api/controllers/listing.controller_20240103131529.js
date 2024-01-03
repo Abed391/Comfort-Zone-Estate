@@ -1,5 +1,4 @@
 import Listing from "../models/listing.model.js";
-import { errorHandler } from "../utils/error.js";
 
 export const createListing = async (req, res, next) => {
   try {
@@ -38,10 +37,9 @@ export const updateListing = async (req, res, next) => {
   try {
     const updatedListing = await Listing.findByIdAndUpdate(
       req.parms.id,
-      req.body,
-      { new: true }
+      req.body
     );
-    return res.status(200).json(updatedListing);
+    return res.status(201).json(listing);
   } catch (error) {
     next(error);
   }

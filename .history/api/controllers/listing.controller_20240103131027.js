@@ -1,5 +1,4 @@
 import Listing from "../models/listing.model.js";
-import { errorHandler } from "../utils/error.js";
 
 export const createListing = async (req, res, next) => {
   try {
@@ -32,17 +31,5 @@ export const updateListing = async (req, res, next) => {
     return next(errorHandler(404, "Listing not found!"));
   }
   if (req.user.id !== listing.userRef) {
-    return next(errorHandler(401, "You can only update your own listings!"));
-  }
-
-  try {
-    const updatedListing = await Listing.findByIdAndUpdate(
-      req.parms.id,
-      req.body,
-      { new: true }
-    );
-    return res.status(200).json(updatedListing);
-  } catch (error) {
-    next(error);
-  }
+    return next(errorHandler(401, "You can only update your own listings!")); 
 };

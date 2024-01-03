@@ -1,5 +1,4 @@
 import Listing from "../models/listing.model.js";
-import { errorHandler } from "../utils/error.js";
 
 export const createListing = async (req, res, next) => {
   try {
@@ -41,7 +40,7 @@ export const updateListing = async (req, res, next) => {
       req.body,
       { new: true }
     );
-    return res.status(200).json(updatedListing);
+    return res.status(201).json(updatesdlisting);
   } catch (error) {
     next(error);
   }
