@@ -166,11 +166,6 @@ export default function Profile() {
     })
     .then((data) => console.log(data))
     .catch((error) => console.error("Error:", error.message));
-  // firebase storage
-  //allow read;
-  //allow write: if
-  //request.resource.size < 5 * 1024 * 1024 &&
-  //request.resource.contentType.matches('image/.*')
 
   return (
     <div className="p-3 max-w-lg mx-auto">

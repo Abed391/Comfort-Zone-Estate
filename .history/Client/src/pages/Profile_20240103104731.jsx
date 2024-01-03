@@ -150,28 +150,6 @@ export default function Profile() {
       prev.filter((listing) => listing._id !== listingId)
     );
   };
-  const token = "your_auth_token";
-  fetch("/api/your-endpoint", {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Unauthorized");
-      }
-      return response.json();
-    })
-    .then((data) => console.log(data))
-    .catch((error) => console.error("Error:", error.message));
-  // firebase storage
-  //allow read;
-  //allow write: if
-  //request.resource.size < 5 * 1024 * 1024 &&
-  //request.resource.contentType.matches('image/.*')
-
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
